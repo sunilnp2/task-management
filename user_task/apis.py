@@ -11,9 +11,8 @@ class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [SessionAuthentication]
-    # permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['status']s
+    filterset_fields = ['status']
 
     def get_queryset(self):
         return super().get_queryset().filter(created_by=self.request.user)
